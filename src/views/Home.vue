@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="form-auth">
     <div v-if="showLogin">
       <Login />
       <p>
