@@ -60,3 +60,10 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
 }
+
+.chat-wrapper {
+    padding-bottom: 1px;
+}
+.chat-form {
+    padding: 10px;
+}
