@@ -1,22 +1,23 @@
 <template>
-    <div class="alert alert-danger" v-if="error">
-        Error message !
-    </div>
     <form @submit.prevent="handleSubmit">
-        <h3 class="h3 mb-3 fw-normal">Register</h3>
-        <div class="form-floating">
-            <input type="text" class="form-control" v-model="name">
-            <label for="">Name</label>
+        <div class="alert alert-danger" v-if="error">
+            {{ error }}
         </div>
-        <div class="form-floating">
-            <input type="email" class="form-control" v-model="email">
-            <label for="">Email</label>
-        </div>  
-        <div class="form-floating">
-            <input type="password" class="form-control" v-model="password">
-            <label for="">Password</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        
+            <h3 class="h3 mb-3 fw-normal">Register</h3>
+            <div class="form-floating">
+                <input type="text" class="form-control" v-model="name">
+                <label for="">Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" v-model="email">
+                <label for="">Email</label>
+            </div>  
+            <div class="form-floating">
+                <input type="password" class="form-control" v-model="password">
+                <label for="">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
     </form> 
 </template>
 
