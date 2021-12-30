@@ -1,26 +1,45 @@
 <template>
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" v-if="error">
         Error message !
     </div>
-    <h3 class="h3 mb-3 fw-normal">Register</h3>
-    <div class="form-floating">
-        <input type="text" class="form-control">
-        <label for="">Name</label>
-    </div>
-    <div class="form-floating">
-        <input type="email" class="form-control">
-        <label for="">Email</label>
-    </div>  
-    <div class="form-floating">
-        <input type="password" class="form-control">
-        <label for="">Password</label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary">Register</button> 
+    <form @submit.prevent="handleSubmit">
+        <h3 class="h3 mb-3 fw-normal">Register</h3>
+        <div class="form-floating">
+            <input type="text" class="form-control" v-model="name">
+            <label for="">Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="email" class="form-control" v-model="email">
+            <label for="">Email</label>
+        </div>  
+        <div class="form-floating">
+            <input type="password" class="form-control" v-model="password">
+            <label for="">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+    </form> 
 </template>
 
 <script>
+import { ref } from "vue"
+import useRegister from "../../composable/useRegister.js"
 export default {
-    
+    setup() {
+        const name = ref("")
+        const email = ref("")
+        const password = ref("")
+
+        const { error, register } = useRegister()
+
+        const handleSubmit = async () => {
+            await register(name.value, email.value, password.value)
+            if (!error.value) {
+                console.log(error.value)
+            }
+        }
+
+        return { name, email, password, error, handleSubmit}
+    }
 }
 </script>
 
