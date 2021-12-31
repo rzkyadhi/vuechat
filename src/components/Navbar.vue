@@ -16,7 +16,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav me-auto">
                   <li class="nav-item">
-                      <a href="#" class="nav-link active" aria-current="page">Admin</a>
+                      <a href="#" class="nav-link active" aria-current="page">{{ user.displayName }}</a>
                   </li>
               </ul>
               <ul class="navbar-nav">
@@ -31,10 +31,18 @@
 
 <script>
 import useLogout from "../composable/useLogout.js"
+import { projectAuth } from "../config/firebase.js"
+import { ref } from "vue"
 
 export default {
     setup() {
         const { error, logout } = useLogout()
+
+        const user = ref(projectAuth.currentUser)
+
+        projectAuth.onAuthStateChanged((_user) => {
+            user.value = _user
+        })
 
         const handleLogout = async() => {
             await logout()
@@ -43,7 +51,7 @@ export default {
             }
         }
 
-        return { handleLogout }
+        return { handleLogout, user }
     }
 }
 </script>
