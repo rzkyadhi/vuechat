@@ -25,7 +25,7 @@
 import { ref } from "vue"
 import useRegister from "../../composable/useRegister.js"
 export default {
-    setup() {
+    setup(props, context) {
         const name = ref("")
         const email = ref("")
         const password = ref("")
@@ -36,6 +36,7 @@ export default {
             await register(name.value, email.value, password.value)
             if (!error.value) {
                 console.log(error.value)
+                context.emit("register")
             }
         }
 
