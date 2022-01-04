@@ -13,11 +13,21 @@ const requireAuth = (to, from, next) => {
   }
 }
 
+const forbidAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if (user) {
+    next({ name: 'Room' })
+  } else {
+    next()
+  }
+}
+
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    beforeEnter: forbidAuth
   },
   {
     path: '/room',
