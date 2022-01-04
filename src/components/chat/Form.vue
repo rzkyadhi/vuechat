@@ -30,7 +30,7 @@ export default {
       const chat = {
         name: 'Hakim',
         message: message.value,
-        createdAt: timestamp()
+        createdAt: timestamp(),
       }
       await storeDoc(chat)
       if (!error.value) {
