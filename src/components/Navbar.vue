@@ -31,18 +31,12 @@
 
 <script>
 import useLogout from "../composable/useLogout.js"
-import { projectAuth } from "../config/firebase.js"
-import { ref } from "vue"
+import getUser from '../composable/getUser.js'
 
 export default {
     setup() {
         const { error, logout } = useLogout()
-
-        const user = ref(projectAuth.currentUser)
-
-        projectAuth.onAuthStateChanged((_user) => {
-            user.value = _user
-        })
+        const { user } = getUser()
 
         const handleLogout = async() => {
             await logout()
