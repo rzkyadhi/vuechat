@@ -1,6 +1,6 @@
 <template>
+  <div class="alert alert-danger" v-if="error">{{ error }}</div>
   <form class="d-flex chat-form">
-    <div class="alert alert-danger">{{ error }}</div>
     <input
       type="text"
       class="form-control rouned-0"
@@ -21,14 +21,16 @@
 <script>
 import { ref } from 'vue'
 import useCollection from '../../composable/useCollection.js'
+import getUser from '../../composable/getUser'
 import { timestamp } from '../../config/firebase.js'
 export default {
   setup() {
     const message = ref('')
     const { error, storeDoc } = useCollection('message')
+    const { user } = getUser()
     const handleSubmit = async () => {
       const chat = {
-        name: 'Hakim',
+        name: user.value.displayName,
         message: message.value,
         createdAt: timestamp(),
       }
