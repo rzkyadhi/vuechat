@@ -4,13 +4,13 @@ import "firebase/compat/firestore"
 import "firebase/compat/auth"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAHIv7COBpiiwn4GR8rWXjCAvBaAdDGdds",
-    authDomain: "vuebase-788ee.firebaseapp.com",
-    projectId: "vuebase-788ee",
-    storageBucket: "vuebase-788ee.appspot.com",
-    messagingSenderId: "1902043066",
-    appId: "1:1902043066:web:8913153dbe811ded6f4783",
-    measurementId: "G-Z4Y9T6WVLL"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   };
 
 firebase.initializeApp(firebaseConfig)
